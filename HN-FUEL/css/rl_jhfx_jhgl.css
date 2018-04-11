@@ -1,0 +1,93 @@
+/* ------------------以下为第一页样式------------------------ */
+#gl .top{
+  width: 99.4%;
+  height: 36%;
+  background: #f8f8f8;
+}
+#gl .middle{
+  width: 99.2%;
+  height: 40%;
+}
+#gl .bottom{
+  width: 99.2%;
+  height: 22%;
+  border-top: 0.2rem solid #22B0EA;
+  background: #f8f8f8;
+}
+
+#gl .top .tl,#gl .top .tr{
+  float: left;
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box
+}
+#gl .top .tr{
+  float: right;
+}
+#gl .tll,#gl .trl{
+  position: relative;
+  float: left;
+  width: 53%;
+  height: 100%;
+  box-shadow: 12px 0px 22px -16px;
+}
+#gl .tlr,#gl .trr{
+  float: left;
+  margin: 1.7rem 0;
+  width: 42%;
+  height: 80%;
+  border: 1px solid #999;
+  box-shadow: 6px 0px 14px -8px;
+}
+#gl .tlr_tit,#gl .trr_tit{
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+#gl .top .p_1,#gl .top .p_2{
+  font-size: 1.125rem;
+  padding:1.5rem 4rem;
+}
+#gl .top .p_1>span,#gl .top .p_2>span{
+  float: right;
+  font-size: 1.125rem;
+  margin-left: 6rem;
+}
+
+#gl .bottom>table{
+  margin: 0 auto;
+  width: 96%;
+  height: 100%;
+  border-collapse:collapse
+}
+#gl .bottom>table>thead{
+  width: 100%;
+  line-height: 3rem;;
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+#gl .bottom>table>thead td{
+  text-align: center
+}
+#gl .bottom>table>tbody{
+  width: 100%;
+  font-size: 1.125rem;
+}
+#gl .bottom>table>tbody>tr{
+  border-bottom: 1px solid #999;
+}
+
+#gl .bottom>table>tbody>tr>td{
+  text-align: center
+}
+#gl .bottom>table>tbody>tr>td:first-child{
+  text-align: left
+}
+
+
+#gl .middle .bar{
+  position: relative;
+  float: left;
+  width: 25%;
+  height: 100%;
+}

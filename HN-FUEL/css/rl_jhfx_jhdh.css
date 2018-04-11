@@ -1,0 +1,95 @@
+
+/* ------------------以下为第3页样式------------------------ */
+#dh .top{
+  width: 99.2%;
+  height: 33%;
+}
+#dh .middle{
+  width: 99.2%;
+  height: 33%;
+}
+#dh .bottom{
+  width: 99.2%;
+  height: 33%;
+}
+#dh .tl{
+  float: left;
+  width: 30%;
+  height: 100%;
+  box-shadow: 12px 0px 22px -16px;  
+  background: #F8F8F8
+}
+#dh .tr{
+  float: right;
+    width: 70%;
+    height: 100%;
+    background: #EFEFEF
+  }
+#dh .ml,#dh .bl{
+    float: left;
+    width: 70%;
+    height: 100%;
+  }
+#dh .mr,#dh .br{
+    float: right;
+    width: 30%;
+    height: 100%;
+  }
+#dh .tr p,#dh .mr p,#dh .br p{
+    font-size: 1rem;
+    line-height: 0.5rem;
+    height: 0.5rem;
+    padding-left: 1rem;
+    box-sizing: border-box;
+    margin-top:1rem
+  }
+#dh .mr p,#dh .br p{
+    font-weight: bold;
+    background: #F2F2F2;
+    width: 100%;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin-bottom: 0
+  }
+#dh table{
+    width: 100%;
+    height: 80%;
+    border-collapse:collapse;
+  }
+
+#dh .tl,#dh .ml,#dh .bl{
+    position: relative;
+  }
+
+#dh .tr thead{
+    font-size: 1.25rem;
+    text-align: center;
+    line-height: 3rem;
+  }
+#dh .tr tbody{
+    font-size: 1.25rem;
+    text-align: center
+  }
+#dh .tr tbody tr:nth-child(1),#dh .tr tbody tr:nth-child(3){
+    background: #E4E4E4
+  }
+#dh .mr thead,#dh .br thead{
+    font-size: 1rem;
+    text-align: center;
+    background: #F9F9F9;
+    line-height: 3rem;
+  }
+#dh .mr tbody,#dh .br tbody{
+    font-size: 1rem;
+    text-align: center
+  }
+#dh .mr tbody tr,#dh .br tbody tr{
+    height: 2rem;
+    line-height: 2rem;
+  }
+#dh .mr tbody tr:nth-child(1),#dh .mr tbody tr:nth-child(3),#dh .br tbody tr:nth-child(1),#dh .br tbody tr:nth-child(3){
+    background: #E4E4E4
+  }
+#dh .mr tbody tr:nth-child(2),#dh .br tbody tr:nth-child(2){
+    background: #efefef
+  }

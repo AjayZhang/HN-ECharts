@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>日期</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <!--日期样式 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/plugins/datapicker/datepicker3.css">
+    <!-- 日期js -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+</head>
+
+<body>
+    <!-- 年 -->
+    <div class="form-group" style="margin-bottom: 5px;">
+        <div id="data_Y" style="width:205px;">
+            <div class="input-group date">
+                <span class="input-group-addon">
+                    <!-- <i class="fa fa-calendar"></i> -->
+                    <img src="img/calendar.png" alt="">
+                </span>
+                <input type="text" readonly="readonly" class="form-control" value="" id="dateY">
+            </div>
+        </div>
+    </div>
+
+    <!-- 年月 -->
+    <div class="form-group" style="margin-bottom: 5px;">
+        <div id="data_YM" style="width:205px;">
+            <div class="input-group date">
+                <span class="input-group-addon">
+                    <!-- <i class="fa fa-calendar"></i> -->
+                    <img src="img/calendar.png" alt="">
+                </span>
+                <input type="text" readonly="readonly" class="form-control" value="" id="dateYM">
+            </div>
+        </div>
+    </div>
+
+    <!-- 年月日 -->
+    <div class="form-group" style="margin-bottom: 5px;">
+        <div id="data_YMD" style="width:205px;">
+            <div class="input-group date">
+                <span class="input-group-addon">
+                    <!-- <i class="fa fa-calendar"></i> -->
+                    <img src="img/calendar.png" alt="">
+                </span>
+                <input readonly="readonly" type="text" class="form-control" value="" id="dateYMD">
+            </div>
+        </div>
+    </div>
+
+    <!-- 年月日范围 -->
+    <div class="form-group" id="rowform-0-5" style="margin-bottom: 10px;">
+        <div class="form-group" id="data-0-5">
+            <div class="input-daterange input-group" id="datepicker-0-5">
+                <input readonly="readonly" type="text" class="input-sm form-control" name="PRODUCTIONUNITMAP.SYXSJ<>" id="KSRQ" style="width: 130px;">
+                <span class="input-group-addon" style="background-color:#FFFFFF">到</span>
+                <input readonly="readonly" type="text" class="input-sm form-control" name="PRODUCTIONUNITMAP.SYXSJ<>" id="JSRQ" style="width: 130px;">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 年-日期调用
+    $(function () {
+        $('#data_Y .input-group.date').datepicker({
+            minViewMode: 2, //显示到几层，2表示显示到年，1显示到月，0显示到日
+            format: 'yyyy',
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            // todayHighlight: true
+        });
+        var nowdate = new Date();
+        var y = nowdate.getFullYear();
+        $('#dateY').val(y);
+    });
+    // 年月-日期调用
+    $(function () {
+        $('#data_YM .input-group.date').datepicker({
+            minViewMode: 1,
+            format: 'yyyy-mm',
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            // todayHighlight: true
+        });
+        var nowdate = new Date();
+        var y = nowdate.getFullYear();
+        var m = nowdate.getMonth();//获取当前月份的日期 
+        if (m == 0) {
+            $('#dateYM').val(y - 1 + "-12");
+        } else {
+            $('#dateYM').val(y + "-" + (m < 10 ? '0' + m : m));
+        }
+    });
+    // 年月日-日期调用
+    $(function () {
+        $('#data_YMD .input-group.date').datepicker({
+            keyboardNavigation: false,
+            forceParse: false,
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        });
+        var nowdate = new Date();
+        var y = nowdate.getFullYear();
+        var m = nowdate.getMonth();//获取当前月份的日期 
+        var d = nowdate.getDate();//获取当前月份的日期
+        if (m == 0) {
+            $('#dateYMD').val(y - 1  +  "-12" +"-" + (d < 10 ? '0' + d : d));
+        } else {
+            $('#dateYMD').val(y + "-" + (m < 10 ? '0' + m : m)+"-" +(d < 10 ? '0' + d : d));
+        }
+    });
+    // 年月日范围-日期调用
+    $(function () {
+        $('.input-daterange').datepicker({
+            keyboardNavigation: false,
+            forceParse: false,
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        });
+        var nowdate = new Date();
+        var y = nowdate.getFullYear();
+        var m = nowdate.getMonth();//获取当前月份的日期 
+        var d = nowdate.getDate();//获取当前月份的日期
+        if (m == 0) {
+            $('#KSRQ').val(y - 1  +  "-12" +"-" + (d < 10 ? '0' + d : d));
+            $('#JSRQ').val(y - 1  +  "-12" +"-" + (d < 10 ? '0' + d : d));
+        } else {
+            $('#KSRQ').val(y + "-" + (m < 10 ? '0' + m : m)+"-" +(d < 10 ? '0' + d : d));
+            $('#JSRQ').val(y + "-" + (m < 10 ? '0' + m : m)+"-" +(d < 10 ? '0' + d : d));
+        }
+    });
+</script>
+
+</html>

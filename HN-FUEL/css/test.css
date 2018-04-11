@@ -1,0 +1,190 @@
+
+ /* ------------------以下为第一页样式------------------------ */
+#gl .top{
+  width: 99.4%;
+  height: 36%;
+  background: #f8f8f8;
+}
+#gl .middle{
+  width: 99.2%;
+  height: 40%;
+}
+#gl .bottom{
+  width: 99.2%;
+  height: 22%;
+  border-top: 0.2rem solid #22B0EA;
+  background: #f8f8f8;
+}
+
+#gl .top .tl,#gl .top .tr{
+  float: left;
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box
+}
+#gl .top .tr{
+  float: right;
+}
+#gl .tll,#gl .trl{
+  position: relative;
+  float: left;
+  width: 53%;
+  height: 100%;
+  box-shadow: 12px 0px 22px -16px;
+}
+#gl .tlr,#gl .trr{
+  float: left;
+  margin: 1.7rem 0;
+  width: 42%;
+  height: 80%;
+  border: 1px solid #999;
+  box-shadow: 6px 0px 14px -8px;
+}
+#gl .tlr_tit,#gl .trr_tit{
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+#gl .top .p_1,#gl .top .p_2{
+  font-size: 1.125rem;
+  padding:1.5rem 4rem;
+}
+#gl .top .p_1>span,#gl .top .p_2>span{
+  float: right;
+  font-size: 1.125rem;
+  margin-left: 6rem;
+}
+
+#gl .bottom>table{
+  margin: 0 auto;
+  width: 96%;
+  height: 100%;
+  border-collapse:collapse
+}
+#gl .bottom>table>thead{
+  width: 100%;
+  line-height: 3rem;;
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+#gl .bottom>table>thead td{
+  text-align: center
+}
+#gl .bottom>table>tbody{
+  width: 100%;
+  font-size: 1.125rem;
+}
+#gl .bottom>table>tbody>tr{
+  border-bottom: 1px solid #999;
+}
+
+#gl .bottom>table>tbody>tr>td{
+  text-align: center
+}
+#gl .bottom>table>tbody>tr>td:first-child{
+  text-align: left
+}
+
+
+#gl .middle .bar{
+  position: relative;
+  float: left;
+  width: 25%;
+  height: 100%;
+}
+
+ /* ------------------以下为第二页样式------------------------ */
+#dx .top,#dh .top{
+  width: 99.2%;
+  height: 33%;
+}
+#dx .middle,#dh .middle{
+  width: 99.2%;
+  height: 33%;
+}
+#dx .bottom,#dh .bottom{
+  width: 99.2%;
+  height: 33%;
+}
+#dx .tl,#dh .tl{
+  float: left;
+  width: 30%;
+  height: 100%;
+  box-shadow: 12px 0px 22px -16px;  
+  background: #F8F8F8
+}
+#dx .tr,#dh .tr{
+  float: right;
+    width: 70%;
+    height: 100%;
+    background: #EFEFEF
+  }
+  #dx .ml,#dx .bl,#dh .ml,#dh .bl{
+    float: left;
+    width: 70%;
+    height: 100%;
+  }
+  #dx .mr,#dx .br,#dh .mr,#dh .br{
+    float: right;
+    width: 30%;
+    height: 100%;
+  }
+  #dx .tr p,#dx .mr p,#dx .br p,#dh .tr p,#dh .mr p,#dh .br p{
+    font-size: 1rem;
+    line-height: 0.5rem;
+    height: 0.5rem;
+    padding-left: 1rem;
+    box-sizing: border-box;
+    margin-top:1rem
+  }
+  #dx .mr p,#dx .br p,#dh .mr p,#dh .br p{
+    font-weight: bold;
+    background: #F2F2F2;
+    width: 100%;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin-bottom: 0
+  }
+  #dx table,#dh table{
+    width: 100%;
+    height: 80%;
+    border-collapse:collapse;
+  }
+
+  #dx .tl,#dx .ml,#dx .bl,#dh .tl,#dh .ml,#dh .bl{
+    position: relative;
+  }
+
+  #dx .tr thead,#dh .tr thead{
+    font-size: 1.25rem;
+    text-align: center;
+    line-height: 3rem;
+  }
+  #dx .tr tbody,#dh .tr tbody{
+    font-size: 1.25rem;
+    text-align: center
+  }
+  #dx .tr tbody tr:nth-child(1),#dx .tr tbody tr:nth-child(3),#dh .tr tbody tr:nth-child(1),#dh .tr tbody tr:nth-child(3){
+    background: #E4E4E4
+  }
+  #dx .mr thead,#dx .br thead,#dh .mr thead,#dh .br thead{
+    font-size: 1rem;
+    text-align: center;
+    background: #F9F9F9;
+    line-height: 3rem;
+  }
+  #dx .mr tbody,#dx .br tbody,#dh .mr tbody,#dh .br tbody{
+    font-size: 1rem;
+    text-align: center
+  }
+  #dx .mr tbody tr,#dx .br tbody tr,#dh .mr tbody tr,#dh .br tbody tr{
+    height: 2rem;
+    line-height: 2rem;
+  }
+  #dx .mr tbody tr:nth-child(1),#dx .mr tbody tr:nth-child(3),#dx .br tbody tr:nth-child(1),#dx .br tbody tr:nth-child(3),#dh .mr tbody tr:nth-child(1),#dh .mr tbody tr:nth-child(3),#dh .br tbody tr:nth-child(1),#dh .br tbody tr:nth-child(3){
+    background: #E4E4E4
+  }
+  #dx .mr tbody tr:nth-child(2),#dx .br tbody tr:nth-child(2),#dh .mr tbody tr:nth-child(2),#dh .br tbody tr:nth-child(2){
+    background: #efefef
+  }
+ /* ------------------以下为第三页样式------------------------ */

@@ -1,0 +1,216 @@
+<!-- <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}" /> -->
+<!-- ----------------------开发：张亚杰 20180319----------------------- -->
+<!-- ----------------------修改：张亚杰 20180327----------------------- -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>燃料供应-耗差分析</title>
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--日期样式 -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/plugins/datapicker/datepicker3.css">
+</head>
+
+<body>
+  <div class="hd">
+    <div class="level">
+      <i class="fa fa-map-marker"></i>
+      <p class="lev_tit" id="reporttitle">燃料供应 > 耗差分析</p>
+    </div>
+    <div class="param">
+      <div name="group" id="p_group">
+        <p></p>
+        <span>
+          <i class="fa fa-sitemap"></i>
+        </span>
+      </div>
+      <div class="form-group" style="margin-bottom: 5px;">
+        <div id="data_YM" style="width:205px;">
+          <div class="input-group date">
+            <span class="input-group-addon" id="p_icon2">
+              <i class="fa fa-calendar"></i>
+            </span>
+            <input type="text" readonly="readonly" class="form-control" value="" id="dateYM">
+          </div>
+        </div>
+      </div>
+      <div class="query">查询</div>
+    </div>
+  </div>
+  <div class="menu">
+    <div class="tab active">
+
+      <i class="fa fa-fire"></i>
+      <p>入厂入炉热值差</p>
+    </div>
+    <div class="tab">
+      <i class="fa fa-history" aria-hidden="true"></i>
+      <p>矿发到厂热值差</p>
+    </div>
+    <div class="tab">
+      <i class="fa fa-cubes"></i>
+      <p>厂损</p>
+    </div>
+    <div class="tab">
+      <i class="fa fa-truck"></i>
+      <p>途损</p>
+    </div>
+    <div class="bylj">
+      <label class="radio-inline">
+        <input type="radio" name="optionsRadiosinline" id="by" value="本月" checked> 本月
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="optionsRadiosinline" id="lj" value="累计"> 累计
+      </label>
+    </div>
+    <p class="unit">单位：千卡/千克</p>
+  </div>
+  <div class="main active">
+    <iframe id="tabframe" src="rl_hcfx_rcrlrzc.html" frameborder="no" border="0" scrolling="no" style="display: inline;"></iframe>
+  </div>
+
+  <div class="popup-inform">
+    <iframe id="subframe" src="" frameborder="no" border="0" scrolling="no" style="display: inline;"></iframe>
+  </div>
+
+  <!-- loading
+	<div class="modal fade" id="myloading" tabindex="1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="my-modal-dialog" >
+	      <img src="${ctx}/img/loading3.gif" >
+	      <p>正在加载...</p>
+	  </div>
+	</div> -->
+</body>
+
+</html>
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/font.js"></script>
+<!-- 日期js -->
+<script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script>
+  var GL_key = '${KEY}';
+  var GL_weburl = '${WEBURL}';
+  var GL_orgname = '${ORGNAME}';
+  var GL_orgcode = '${ORGCODE}'; //---------公司编码
+  var GL_dateInfo;
+  //console.log(orgcode,orgname)
+
+  //-------------------窗口加载----------------------
+  $(window).ready(function () {
+    var W_w = $(window).width();
+    var W_h = $(window).height();
+    $('body').width(W_w);
+    $('body').height(W_h);
+    $("#p_group>p").text(GL_orgname);
+    var url = $("#tabframe").attr("src");
+    console.log(url)
+  })
+
+  //-------------------窗口尺寸变化------------------------
+  $(window).resize(function () {
+    var W_w = $(window).width();
+    var W_h = $(window).height();
+    $('body').width(W_w);
+    $('body').height(W_h);
+  })
+
+  //-----------------集团参数点击事件------------------------
+  $("#p_group span").click(function () {
+
+    $(".popup-inform").show();
+    $("#subframe").attr("src", "${ctx}/comp/orgwithauth.shtml");
+  });
+
+  $("#p_group").click(function () {
+
+    $(".popup-inform").show();
+    $("#subframe").attr("src", "${ctx}/comp/orgwithauth.shtml");
+  });
+
+  function closeOrg(id, name) {
+    orgcode = id;
+    $("#subframe").attr("src", "");
+    $(".popup-inform").hide();
+    $("#p_group>p").html(name);
+
+  }
+
+  function close2() {
+    $("#subframe").attr("src", "");
+    $(".popup-inform").hide();
+  }
+
+  // -----------------年月参数调用---------------------------------
+  $(function () {
+    $('#data_YM .input-group.date').datepicker({
+      minViewMode: 1,
+      format: 'yyyy-mm',
+      keyboardNavigation: false,
+      forceParse: false,
+      autoclose: true,
+      // todayHighlight: true
+    });
+    var nowdate = new Date();
+    var y = nowdate.getFullYear();
+    var m = nowdate.getMonth(); //获取当前月份的日期 
+    if (m == 0) {
+      $('#dateYM').val(y - 1 + "-12");
+    } else {
+      $('#dateYM').val(y + "-" + (m < 10 ? '0' + m : m));
+    }
+  });
+
+  //---------------------tab标签切换--------------------------------
+  $(".tab").click(function () {
+    var idx = $(this).index();
+    $(this).addClass("active").siblings().removeClass("active");
+    var tabtxt = $(this).find("p").text();
+    if (tabtxt == "入厂入炉热值差") {
+      $("#tabframe").attr("src", "rl_hcfx_rcrlrzc.html");
+      $(".bylj").css("display", "none");
+      $(".unit").text("单位：千卡/千克");
+    }
+    if (tabtxt == "矿发到厂热值差") {
+      $("#tabframe").attr("src", "rl_hcfx_kfdcrzc.html");
+      $(".bylj").css("display", "none");
+      $(".unit").text("单位：千卡/千克");      
+    }
+    if (tabtxt == "厂损") {
+      $("#tabframe").attr("src", "rl_hcfx_cs.html");
+      $(".bylj").css("display", "block");
+      $(".unit").text("单位：吨");      
+    }
+    if (tabtxt == "途损") {
+      $("#tabframe").attr("src", "rl_hcfx_ts.html");
+      $(".bylj").css("display", "block");
+      $(".unit").text("单位：吨");      
+    }
+  })
+
+  //-------------------点击查询按钮------------------------
+  $(".query").click(function () {
+    GL_dateInfo = ($("#dateYM").val()).replace("-", "");
+    console.log(GL_dateInfo)
+    refreshData(GL_weburl, GL_orgcode, GL_dateInfo);
+    //console.log(dateInfo)
+  })
+  //-------------------月度累计按钮------------------------
+  $(".by").click(function () {
+    //$(this).find("span").css("background","red");
+    $(this).find("span").append("<span></span>");
+    $(this).siblings().find("span").find("span").remove();
+    //console.log(dateInfo)
+  })
+  $(".lj").click(function () {
+    $(this).find("span").append("<span></span>");
+    $(this).siblings().find("span").find("span").remove();
+    //console.log(dateInfo)
+  })
+</script>

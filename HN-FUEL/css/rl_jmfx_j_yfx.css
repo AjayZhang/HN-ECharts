@@ -1,0 +1,121 @@
+
+ /* ------------------以下为月分析页样式------------------------ */
+ body{
+   margin: 0;
+   padding: 0;
+ }
+ p{
+  margin-bottom: 0 !important;
+}
+#yfx .top{
+ width: 100%;
+ height: 30%;
+ background: #F8F8F8;
+ /* border: 0.001rem solid red; */
+}
+#yfx .bottom{
+ width: 100%;
+ height: 70%;
+ /* border: 0.001rem solid red; */
+}
+
+#yfx .top .tl{
+ position: relative;
+ float: left;
+ width: 70%;
+ height: 100%;
+ /* border: 0.001rem solid red; */
+}
+#yfx .top .tr{
+ float: right;
+ width: 30%;
+ height: 100%;
+ border-left: 0.1rem solid #999;
+}
+#yfx .top .tr .ybmdj{
+ width: 100%;
+ height: 60%;
+}
+#yfx .top .tr .ljdj{
+ width: 100%;
+ height: 40%;
+}
+
+p.total{
+ width: 100%;
+ height: 2.5rem;
+ background: #f2f2f2;
+ font-size: 1.125rem;
+ font-weight: bold;
+ line-height: 2.5rem;
+ padding-left: 1rem;
+ box-sizing: border-box
+}
+p.total span{
+ float: right;
+ width: 70%;
+ height: 2.5rem;
+ font-size: 1.6rem;
+ font-weight: bold;
+ color: #F58A22
+}
+.top .tr .tb,.top .tr .hb{
+ width: 100%;
+ height: 3rem;
+ font-size: 1.125rem;
+ line-height: 3rem;
+}
+
+.tbzj,.hbzj{
+ position: relative;
+ float: left;
+ margin-left: 1.5rem;
+ width: 42%;
+}
+.tbzl,.hbzl{
+ position: relative;
+ float: right;
+ margin-right: 1.5rem;
+ width: 42%;
+}
+.tbzj i,.hbzj i,.tbzl i,.hbzl i{
+ position: absolute;
+ top: 0.5rem;
+ right: 1rem;
+ font-size: 2rem;
+ display: none;
+}
+.fa-arrow-circle-up{
+ color: #FD5C5B;
+}
+.fa-arrow-circle-down{
+ color: #0AD267;
+}
+.bottom>.menu{
+ width: 100%;
+ height: 6%;
+ margin: 0;
+}
+.bottom>.menu>.tab{
+ float: left;
+ width: 20%;
+ height: 100%;
+ border: 0.1rem solid #999;
+ border-radius: 0.3rem 0.3rem 0 0;
+ font-size: 1rem;
+ text-align: center;
+ font-weight: normal;
+ cursor: pointer;
+}
+.bottom>.menu>.tab.active{
+ border-bottom:none;
+ color:#fff;
+ background: #42C0EE;
+}
+.bottom .bar_m_1,.bottom .bar_m_2{
+ width: 100%;
+ height: 46%;
+ margin-bottom: 0.5%;
+ background: #F8F8F8;
+ /* border: 0.01rem solid red; */
+}

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/jmfx-l.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/plugins/datapicker/datepicker3.css">
+</head>
+
+<body>
+  <div class="hd">
+    <div class="level">
+      <i class="fa fa-map-marker"></i>
+      <p class="lev_tit">燃料供应 > 进煤分析 > 量</p>
+    </div>
+    <div class="param">
+      <div name="group" id="p_group">
+        <p></p>
+        <span>
+          <i class="fa fa-sitemap"></i>
+        </span>
+      </div>
+      <div class="form-group" style="margin-bottom: 5px;">
+        <div id="data_YMD" style="width:205px;">
+          <div class="input-group date">
+            <span class="input-group-addon" id="p_icon2">
+              <i class="fa fa-calendar"></i>
+            </span>
+            <input readonly="readonly" type="text" class="form-control" value="" id="dateYMD">
+          </div>
+        </div>
+      </div>
+      <div class="query">查询</div>
+    </div>
+  </div>
+  <div class="menu">
+    <div class="tab active">
+      <i class="fa fa-line-chart"></i>
+      <p>趋势分析</p>
+    </div>
+    <div class="tab">
+      <i class="fa fa-bar-chart"></i>
+      <p>对标分析</p>
+    </div>
+    <p class="unit">单位：万吨</p>
+  </div>
+  <div class="main active">
+    <div class="content active" id="qs">
+      <div class="top">
+        <div class="tl">
+          <div class="jm">
+            <p>当日进煤</p>
+            <span id="day_qs">45.58</span>
+          </div>
+          <div class="jm">
+            <p>本周进煤</p>
+            <span id="week_qs">45.58</span>
+          </div>
+          <div class="jm">
+            <p>本月进煤</p>
+            <span id="month_qs">536.60</span>
+          </div>
+          <div class="jm">
+            <p>年累进煤</p>
+            <span id="year">536.60</span>
+          </div>
+        </div>
+        <div class="tr" id="line_1">
+        </div>
+      </div>
+      <div class="middle" id="line_2">
+      </div>
+      <div class="bottom" id="bar_1">
+      </div>
+    </div>
+    <div class="content" id="db">
+      <div class="top">
+        <div class="tab_warp_db">
+          <div class="tab active">日</div>
+          <div class="tab">周</div>
+          <div class="tab">月</div>
+        </div>
+        <div class="content_db" id="bar_2"></div>
+      </div>
+      <div class="bottom" id="bar_3">
+
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/font.js"></script>
+<script src="js/echarts.js"></script>
+<script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+
+<script>
+  var key = '${KEY}';
+  var orgname = '${ORGNAME}';
+  var orgcode = '${ORGCODE}'; //---------公司编码
+  var dateInfo;
+  var grp='各分公司进煤对标分析';
+  var fac='各电厂进煤对标分析';
+  var id_1="bar_2";
+  var id_2="bar_3";
+  //console.log(orgcode,orgname)
+
+  //-------------------窗口加载----------------------
+  $(window).ready(function () {
+    var W_w = $(window).width();
+    var W_h = $(window).height();
+    $('body').width(W_w);
+    $('body').height(W_h);
+    // $("#p_group>p").text(orgname);
+    $(function () {
+      dateInfo = $("#dateYMD").val();
+      var year = dateInfo.substring(0, 4);
+      var month = function () {
+        var m = dateInfo.substring(5, 7);
+        if (m < 10) {
+          var nm = m.substring(1, 2);
+          return nm;
+        } else {
+          return m;
+        }
+      };
+      var day = function () {
+        var d = dateInfo.substring(8, 10);
+        if (d < 10) {
+          var nd = d.substring(1, 2);
+          return nd;
+        } else {
+          return d;
+        }
+      };
+      var newDate = year.concat(dateInfo.substring(5, 7), dateInfo.substring(8, 10));
+      // refreshData(orgcode,dateInfo);
+      var tit_1=year + '年' + month(dateInfo) + '月' + day(dateInfo) + '日' + '各分公司进煤对标分析';
+      var tit_2=year + '年第' + 'n' + '周' + '各分公司进煤对标分析';
+      var tit_3=year + '年' + month(dateInfo) + '月' + '各分公司进煤对标分析';
+      var tit_4=year + '年' + month(dateInfo) + '月' + day(dateInfo) + '日' + '各电厂进煤对标分析';
+      var tit_5=year + '年第' + 'n' + '周' + '各电厂进煤对标分析';
+      var tit_6=year + '年' + month(dateInfo) + '月' + '各电厂进煤对标分析';
+      drawBar2(id_1,barData_2,tit_1);
+      drawBar3(id_2,barData_2,tit_4);
+    })
+    drawLine1(lineData_1);
+    drawLine2(lineData_2);
+    drawBar1(barData_1);
+  })
+
+  //-------------------窗口尺寸变化------------------------
+  $(window).resize(function () {
+    var W_w = $(window).width();
+    var W_h = $(window).height();
+    $('body').width(W_w);
+    $('body').height(W_h);
+  })
+
+  //-----------------集团参数点击事件------------------------
+  $("#p_group span").click(function () {
+    $(".popup-inform").show();
+    $("#subframe").attr("src", "${ctx}/comp/orgwithauth.shtml");
+  });
+
+  $("#p_group").click(function () {
+
+    $(".popup-inform").show();
+    $("#subframe").attr("src", "${ctx}/comp/orgwithauth.shtml");
+  });
+
+  function closeOrg(id, name) {
+    orgcode = id;
+    $("#subframe").attr("src", "");
+    $(".popup-inform").hide();
+    $("#p_group>p").html(name);
+
+  }
+
+  function close2() {
+    $("#subframe").attr("src", "");
+    $(".popup-inform").hide();
+  }
+
+  // -----------------年月日参数调用---------------------------------
+  $(function () {
+    $('#data_YMD .input-group.date').datepicker({
+      keyboardNavigation: false,
+      forceParse: false,
+      format: 'yyyy-mm-dd',
+      autoclose: true,
+      todayHighlight: true
+    });
+    var nowdate = new Date();
+    var y = nowdate.getFullYear();
+    var m = nowdate.getMonth(); //获取当前月份的日期 
+    var d = nowdate.getDate(); //获取当前月份的日期
+    if (m == 0) {
+      $('#dateYMD').val(y - 1 + "-12" + "-" + (d < 10 ? '0' + d : d));
+    } else {
+      $('#dateYMD').val(y + "-" + (m < 10 ? '0' + m : m) + "-" + (d < 10 ? '0' + d : d));
+    }
+  });
+
+  //---------------------tab标签切换--------------------------------
+  $("body>.menu>.tab").click(function () {
+    var idx = $(this).index();
+    $(this).addClass("active").siblings().removeClass("active");
+    $(".content").eq(idx).addClass("active").siblings().removeClass("active");
+  })
+  //---------------------第二页天周月标签切换--------------------------------
+  $(".tab_warp_db .tab").click(function () {
+    $(this).addClass("active").siblings().removeClass("active");
+    var dwm = $(this).text();
+    dateInfo = $("#dateYMD").val();
+    var year = dateInfo.substring(0, 4);
+    var month = function () {
+      var m = dateInfo.substring(5, 7);
+      if (m < 10) {
+        var nm = m.substring(1, 2);
+        return nm;
+      } else {
+        return m;
+      }
+    };
+    var day = function () {
+      var d = dateInfo.substring(8, 10);
+      if (d < 10) {
+        var nd = d.substring(1, 2);
+        return nd;
+      } else {
+        return d;
+      }
+    };
+    var newDate = year.concat(dateInfo.substring(5, 7), dateInfo.substring(8, 10));
+    var tit_1=year + '年' + month(dateInfo) + '月' + day(dateInfo) + '日' + '各分公司进煤对标分析';
+    var tit_2=year + '年第' + 'n' + '周' + '各分公司进煤对标分析';
+    var tit_3=year + '年' + month(dateInfo) + '月' + '各分公司进煤对标分析';
+    var tit_4=year + '年' + month(dateInfo) + '月' + day(dateInfo) + '日' + '各电厂进煤对标分析';
+    var tit_5=year + '年第' + 'n' + '周' + '各电厂进煤对标分析';
+    var tit_6=year + '年' + month(dateInfo) + '月' + '各电厂进煤对标分析';
+
+    $(this).parents().parents().find("#bar_2").remove();
+    $(this).parents().parents().parents().find("#bar_3").remove();
+    if (dwm == "日") {
+      // console.log(dwm)
+      $(this).parents().parents().append("<div class='content_db' id='bar_2'></div>");
+      drawBar2(id_1,barData_2,tit_1);
+      $(this).parents().parents().parents().append("<div class='bottom' id='bar_3'></div>");
+      drawBar3(id_2,barData_2, tit_4);
+    } else if (dwm == "周") {
+      // console.log(dwm)
+      $(this).parents().parents().append("<div class='content_db' id='bar_2'></div>");
+      drawBar2(id_1,barData_2,tit_2);
+      console.log(tit_2)      
+      $(this).parents().parents().parents().append("<div class='bottom' id='bar_3'></div>");
+      drawBar3(id_2,barData_2,tit_5);
+    } else if (dwm == "月") {
+      // console.log(dwm)
+      $(this).parents().parents().append("<div class='content_db' id='bar_2'></div>");
+      drawBar2(id_1,barData_2,tit_3);
+      $(this).parents().parents().parents().append("<div class='bottom' id='bar_3'></div>");
+      drawBar3(id_2,barData_2, tit_6);
+    }
+  })
+
+
+  //-------------------点击查询按钮------------------------
+  $(".query").click(function () {
+    dateInfo = $("#dateYMD").val();
+    var year = dateInfo.substring(0, 4);
+    var month = function () {
+      var m = dateInfo.substring(5, 7);
+      if (m < 10) {
+        var nm = m.substring(1, 2);
+        return nm;
+      } else {
+        return m;
+      }
+    };
+    var day = function () {
+      var d = dateInfo.substring(8, 10);
+      if (d < 10) {
+        var nd = d.substring(1, 2);
+        return nd;
+      } else {
+        return d;
+      }
+    };
+    var newDate = year.concat(dateInfo.substring(5, 7), dateInfo.substring(8, 10));
+
+    console.log(newDate.substring(0,4))
+    // refreshData(orgcode, dateInfo);
+    //console.log(dateInfo)
+  })
+  //-----------------------以下为模拟数据--------------------------------//
+
+  var lineData_1 = {
+    xdata: ["2/16", "2/17", "2/18", "2/16", "2/17", "2/18", "2/16", "2/17", "2/18", "2/16", "2/17", "2/18", "2/16",
+      "2/17", "2/18",
+    ],
+    ydata: [4679, 4872, 4364, 4679, 4872, 4364, 4679, 4872, 4364, 4679, 4872, 4364, 4679, 4872, 4364]
+  }
+  var lineData_2 = {
+    xdata: ["2017-53周", "2017-53周", "2017-53周", "2017-53周", "2017-53周", "2017-53周", "2017-53周", "2017-53周",
+      "2017-53周", "2017-53周", "2017-53周", "2017-53周", "2017-53周", "2017-53周", "2017-53周",
+    ],
+    ydata: [4679, 4872, 4364, 4679, 4872, 4364, 4679, 4872, 4364, 4679, 4872, 4364, 4679, 4872, 4364]
+  }
+  var barData_1 = {
+    xdata: ["2017.02", "2017.02", "2017.02", "2017.02", "2017.02", "2017.02", "2017.02", "2017.02", "2017.02",
+      "2017.02", "2017.02", "2017.02"
+    ],
+    ydata1: [4679, 4872, 4364, 4679, 4872, 4364, 4679, 4872, 4364, 4679, 4872, 4364],
+    ydata2: [4279, 4372, 4064, 4279, 4372, 4064, 4279, 4372, 4064, 4279, 4372, 4064, ]
+  }
+  var barData_2 = {
+    xdata: ["福建", "浙江", "上海", "海南", "辽宁", "河北"],
+    ydata: [84, 94, 86, 66, 88, 90, 74]
+  }
+
+  //-----------------------以下为第一页图表--------------------------------//
+
+  var drawLine1 = function (datainfo) {
+    var myChart = echarts.init(document.getElementById("line_1"));
+    var option = {
+      title: {
+        text: '集团日进煤趋势分析',
+        x: 'center',
+        y: '5%',
+        textStyle: {
+          fontSize: "120%",
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+          type: 'line' // 默认为直线，可选为：'line' | 'shadow'
+        }
+      },
+      grid: {
+        left: '2%',
+        right: '2%',
+        top: '25%',
+        bottom: '4%',
+        containLabel: true
+      },
+      xAxis: {
+        data: datainfo.xdata,
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: "80%"
+        }
+      },
+      yAxis: {
+        type: 'value',
+        scale: true,
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: "80%"
+        }
+      },
+      series: [{
+        type: 'line',
+        data: datainfo.ydata,
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: {
+          normal: {
+            color: '#0CD268',
+            lineStyle: {
+              color: '#0CD268'
+            }
+          }
+        },
+      }, ]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
+  }
+
+  var drawLine2 = function (datainfo) {
+    var myChart = echarts.init(document.getElementById("line_2"));
+    var option = {
+      title: {
+        text: '集团周进煤趋势分析',
+        x: 'center',
+        y: '5%',
+        textStyle: {
+          fontSize: "120%",
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+          type: 'line' // 默认为直线，可选为：'line' | 'shadow'
+        }
+      },
+      grid: {
+        left: '2%',
+        right: '2%',
+        top: '25%',
+        bottom: '4%',
+        containLabel: true
+      },
+      xAxis: {
+        data: datainfo.xdata,
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: "80%"
+        }
+      },
+      yAxis: {
+        type: 'value',
+        scale: true,
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: "80%"
+        }
+      },
+      series: [{
+        type: 'line',
+        data: datainfo.ydata,
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: {
+          normal: {
+            color: '#0CD268',
+            lineStyle: {
+              color: '#0CD268'
+            }
+          }
+        },
+      }, ]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
+  }
+
+  var drawBar1 = function (datainfo) {
+    var myChart = echarts.init(document.getElementById("bar_1"));
+    var option = {
+      title: {
+        text: '集团月进煤趋势分析',
+        x: 'center',
+        y: '5%',
+        textStyle: {
+          fontSize: "120%",
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+          type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+        }
+      },
+      grid: {
+        left: '2%',
+        right: '2%',
+        top: '25%',
+        bottom: '4%',
+        containLabel: true
+      },
+      legend: {
+        data: ['本期', '同期'],
+        top: '10%',
+        right: '2%'
+      },
+      calculable: true,
+      xAxis: [{
+        type: 'category',
+        data: datainfo.xdata,
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: "80%"
+        }
+      }],
+      yAxis: [{
+        type: 'value',
+        scale: true,
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: "80%"
+        }
+      }],
+      series: [{
+          name: '本期',
+          type: 'bar',
+          data: datainfo.ydata1,
+          barWidth: '20%',
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0,
+            color: '#65B3F6'
+          }, {
+            offset: 1,
+            color: '#5699D3'
+          }]),
+        },
+        {
+          name: '同期',
+          type: 'bar',
+          data: datainfo.ydata2,
+          barWidth: '20%',
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0,
+            color: '#FCE100'
+          }, {
+            offset: 1,
+            color: '#D9C200'
+          }]),
+        }
+      ]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
+  }
+
+  //-----------------------以下为第二页图表--------------------------------//
+
+  var drawBar2 = function (id,datainfo,tit) {
+    var myChart = echarts.init(document.getElementById(id));
+    var option = {
+      title: {
+        text: tit,
+        x: 'center',
+        y: '5%',
+        textStyle: {
+          fontSize: "120%",
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+          type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+        }
+      },
+      grid: {
+        left: '2%',
+        right: '2%',
+        top: '20%',
+        bottom: '4%',
+        containLabel: true
+      },
+      calculable: true,
+      xAxis: [{
+        type: 'category',
+        data: datainfo.xdata,
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: "80%"
+        }
+      }],
+      yAxis: [{
+        type: 'value',
+        scale: true,
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: "80%"
+        }
+      }],
+      series: [{
+        type: 'bar',
+        data: datainfo.ydata,
+        barWidth: '20%',
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+          offset: 0,
+          color: '#65B3F6'
+        }, {
+          offset: 1,
+          color: '#5597D0'
+        }]),
+      }]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
+  }
+
+  var drawBar3 = function (id,datainfo,tit) {
+    var myChart = echarts.init(document.getElementById(id));
+    var option = {
+      title: {
+        text: tit,
+        x: 'center',
+        y: '5%',
+        textStyle: {
+          fontSize: "120%",
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+          type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+        }
+      },
+      grid: {
+        left: '2%',
+        right: '2%',
+        top: '20%',
+        bottom: '12%',
+        containLabel: true
+      },
+      dataZoom:{
+        type:'slider',
+        start:0,
+        end:30,
+      },
+      calculable: true,
+      xAxis: [{
+        type: 'category',
+        data: datainfo.xdata,
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: "80%",
+          rotate:90
+        }
+      }],
+      yAxis: [{
+        type: 'value',
+        scale: true,
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: "80%"
+        }
+      }],
+      series: [{
+        type: 'bar',
+        data: datainfo.ydata,
+        barWidth: '20%',
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+          offset: 0,
+          color: '#65B3F6'
+        }, {
+          offset: 1,
+          color: '#5597D0'
+        }]),
+      }]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
+  }
+
+</script>

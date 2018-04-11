@@ -1,0 +1,14 @@
+.form-control{
+    text-align: center;
+}
+.input-group{
+    width: 180px;
+    cursor: pointer;
+}
+.input-group-addon{
+    background: #fefefe !important; 
+}
+.input-group-addon img{
+    width: 18px;
+    height:18px;
+}

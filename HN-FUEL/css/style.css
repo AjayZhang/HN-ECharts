@@ -1,0 +1,271 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #E2E2E2 !important;
+  font-family: "瀵邦喛钂嬮梿鍛寸拨";
+  scroll-behavior: auto
+  /* border: 1px solid red; */
+}
+.popup-edit,
+.popup-org,
+.inform-pdf,
+.popup-inform,
+.popup-approve{
+  float: left;
+  display: none;
+  position: absolute;
+  z-index: 99;
+  width: 99.2%;
+  height: 770px;
+  left: 6px;
+  top: 1px;
+  background: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.popup-edit iframe,
+.popup-org iframe,
+.inform-pdf iframe,
+.popup-inform iframe,
+.popup-approve iframe {
+  width: 100%;
+  height: 100%;
+}
+
+::-webkit-scrollbar{
+  display:none;
+}
+.hd{
+  margin: 0.5% auto 0;
+  width: 99%;
+  height: 3rem;
+  border: 1px solid #999;
+  background: #fff;
+}
+.level{
+  float: left;
+}
+.fa-map-marker{
+  float: left;
+  margin: 0 1.25rem;
+  line-height: 3rem;
+  font-size: 2.1rem;
+  color: #999
+}
+.lev_tit{
+  float: left;
+  margin: 0.6rem 0;
+  height: 100%;
+  width: auto;  
+  font-size: 1.33rem;
+}
+.param{
+  float: right;
+  width: 45rem;
+  height: 100%;
+  z-index: 100;
+}
+
+#p_group{
+  margin: 0.45rem 1rem 0.8rem 0;
+  float: left;
+  width: 8rem;
+  font-size: 1.25rem;
+  box-sizing: border-box;
+  cusor:pointer
+}
+#p_group{
+  position: relative;
+  width: 12rem;
+  height:2rem;
+  border: 0.05rem solid #999;
+}
+#p_group>p{
+  margin: 0;
+  text-align: center;
+  line-height:1.8rem;
+  cursor: pointer;
+}
+#p_group>span{
+  position: absolute;
+  left:-2rem;
+  top: -0.05rem;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  line-height: 2rem;
+  border: 0.05rem solid #999;
+  font-weight: bold;
+  cursor: pointer;
+}
+.form-group{
+    margin:0.45rem 0 0 2rem;
+    float:left;
+    width:15rem;
+    height:3rem;
+}
+#dateYM,#dateYMD{
+    text-align: center;
+    width:12rem;
+    height:2rem;
+    background:#fff;
+    border-radius:0;
+    border:0.05rem solid #999;
+    font-size:1.25rem;
+    line-height:1.2rem;
+  cursor: pointer;
+}
+.input-group{
+    margin-right:0;
+    width: 18rem;
+    height:1rem;
+    cursor: pointer;
+}
+.input-group-addon{
+    background: #fff !important; 
+    width:2rem !important;
+    height:2rem !important
+}
+#p_icon2{
+    width:2rem;
+    height:2rem;
+    padding:0;
+    border-radius:0;
+    border:0.05rem solid #999;
+    fong-weight:bold
+}
+.input-group-addon img{
+    width: 1rem;
+    height:1rem;
+}
+.query{
+  margin: 0.45rem 5rem 0 0;
+  float: right;
+  width: 6rem;
+  height:2rem;
+  line-height:1.8rem;
+  font-size: 1.25rem;
+  border: 0.05rem solid #555;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+.menu{
+  margin: 0.5% 0.8%;
+  width: 48rem;
+  height: 2.6rem;
+  position: relative;
+}
+body>.menu>.tab{
+  position: relative;
+  float: left;
+  width: 12rem;
+  height: 2.6rem;
+  border-top: 0.2rem solid transparent;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+}
+.tab>p{
+  display: inline;
+  line-height: 2.2rem;
+}
+body>.menu>.tab.active{
+  border-top: 0.2rem solid #22B0EA;
+  box-sizing: border-box;
+  color: #22B0EA;
+  background: #fff;
+  z-index: 99
+}
+
+.unit{
+  position: absolute;
+  left: 102rem;
+  width: 10rem;
+  height: 100%;
+  font-size: 1.125rem;
+  line-height:2rem;
+  text-align:right;
+}
+.wd{
+  position: absolute;
+  left: 90rem;
+  width: 10rem;
+  height: 2rem;
+  background: #22B0EA;
+  border-radius: 0.5rem;
+  z-index: 100;
+  cursor: pointer;
+  display:none !important
+}
+.wd>p{
+  text-align: center;
+  line-height: 2rem;
+  font-size: 1.125rem;
+  color: #fff;
+}
+.wd>i{
+  position: absolute;
+  right: 0.5rem;
+  top: 0.3rem;
+  font-size: 1.25rem;
+}
+.wd>ul{
+  position: absolute;
+  top: 2rem;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border: 0.1rem solid #999;
+  border-radius: 0.5rem;
+  list-style: none;
+  padding: 0;
+  box-shadow: 0rem 0rem 1rem 0.2rem rgba(0,0,0,0.2);
+  display: none
+}
+.wd>ul>li{
+  text-align: center;
+  line-height: 2rem;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+.wd>ul>li:hover{
+  background: #22B0EA;
+}
+.bylj{
+  position: absolute;
+  left: 92rem;
+  top: -0.3rem;
+  width: 12rem;
+  height: 100%;
+  border: 0.1rem solid #fff;
+  font-size: 1.125rem;
+  line-height:1.5rem;
+  padding: 0.9% 0;
+  text-align: center;
+  display: none
+}
+.main{
+  position: relative;
+  margin: -0.7rem auto 0;
+  width: 98.3%;
+  height: 43.5rem;
+  border: 1px solid #999;
+  background: #fff;
+}
+
+#tabframe{
+  width: 100%;
+  height: 100% !important ;
+}
+.content{
+  position:absolute;
+  right:0;
+  top:0;
+  width:100%;
+  height:100%;
+}
+

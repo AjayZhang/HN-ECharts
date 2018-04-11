@@ -1,0 +1,95 @@
+/* ------------------以下为第二页样式------------------------ */
+#dx .top,#dh .top{
+  width: 99.2%;
+  height: 33%;
+}
+#dx .middle,#dh .middle{
+  width: 99.2%;
+  height: 33%;
+}
+#dx .bottom,#dh .bottom{
+  width: 99.2%;
+  height: 33%;
+}
+#dx .tl,#dh .tl{
+  float: left;
+  width: 30%;
+  height: 100%;
+  box-shadow: 12px 0px 22px -16px;  
+  background: #F8F8F8
+}
+#dx .tr,#dh .tr{
+  float: right;
+    width: 70%;
+    height: 100%;
+    background: #EFEFEF
+  }
+  #dx .ml,#dx .bl,#dh .ml,#dh .bl{
+    float: left;
+    width: 70%;
+    height: 100%;
+  }
+  #dx .mr,#dx .br,#dh .mr,#dh .br{
+    float: right;
+    width: 30%;
+    height: 100%;
+  }
+  #dx .tr p,#dx .mr p,#dx .br p,#dh .tr p,#dh .mr p,#dh .br p{
+    font-size: 1rem;
+    line-height: 0.5rem;
+    height: 0.5rem;
+    padding-left: 1rem;
+    box-sizing: border-box;
+    margin-top:1rem
+  }
+  #dx .mr p,#dx .br p,#dh .mr p,#dh .br p{
+    font-weight: bold;
+    background: #F2F2F2;
+    width: 100%;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin-bottom: 0
+  }
+  #dx table,#dh table{
+    width: 100%;
+    height: 80%;
+    border-collapse:collapse;
+  }
+
+  #dx .tl,#dx .ml,#dx .bl,#dh .tl,#dh .ml,#dh .bl{
+    position: relative;
+  }
+
+  #dx .tr thead,#dh .tr thead{
+    font-size: 1.25rem;
+    text-align: center;
+    line-height: 3rem;
+  }
+  #dx .tr tbody,#dh .tr tbody{
+    font-size: 1.25rem;
+    text-align: center
+  }
+  #dx .tr tbody tr:nth-child(1),#dx .tr tbody tr:nth-child(3),#dh .tr tbody tr:nth-child(1),#dh .tr tbody tr:nth-child(3){
+    background: #E4E4E4
+  }
+  #dx .mr thead,#dx .br thead,#dh .mr thead,#dh .br thead{
+    font-size: 1rem;
+    text-align: center;
+    background: #F9F9F9;
+    line-height: 3rem;
+  }
+  #dx .mr tbody,#dx .br tbody,#dh .mr tbody,#dh .br tbody{
+    font-size: 1rem;
+    text-align: center
+  }
+  #dx .mr tbody tr,#dx .br tbody tr,#dh .mr tbody tr,#dh .br tbody tr{
+    height: 2rem;
+    line-height: 2rem;
+  }
+  #dx .mr tbody tr:nth-child(1),#dx .mr tbody tr:nth-child(3),#dx .br tbody tr:nth-child(1),#dx .br tbody tr:nth-child(3),#dh .mr tbody tr:nth-child(1),#dh .mr tbody tr:nth-child(3),#dh .br tbody tr:nth-child(1),#dh .br tbody tr:nth-child(3){
+    background: #E4E4E4
+  }
+  #dx .mr tbody tr:nth-child(2),#dx .br tbody tr:nth-child(2),#dh .mr tbody tr:nth-child(2),#dh .br tbody tr:nth-child(2){
+    background: #efefef
+  }
+ /* ------------------以下为第三页样式------------------------ */

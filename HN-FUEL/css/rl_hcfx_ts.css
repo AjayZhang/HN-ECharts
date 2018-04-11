@@ -1,0 +1,59 @@
+/* ------------------以下为厂损样式------------------------ */
+body{
+  margin: 0;
+  padding: 0;
+}
+p{
+ margin-bottom: 0 !important;
+ margin-top: 0.3rem !important;
+}
+ .top,.bottom{
+width: 100%;
+height: 50%;
+background: #F8F8F8;
+margin-bottom: 0.1%;
+/* border: 0.001rem solid red; */
+}
+ .bottom{
+ position: relative;
+}
+ .bottom{
+ background: #fff;
+ margin-bottom: 0;
+ /* border: 0.001rem solid red; */
+}
+ .top .tl{
+  float: left;
+  width: 19.5%;
+  height: 100%;
+  padding-top: 2rem;
+  box-sizing: border-box;
+  border: 0.1rem solid #cecece;
+ /* border: 0.001rem solid red; */
+}
+.top .tl p{
+  width: 100%;
+  height: 20%;
+  text-align: center;
+  line-height:6rem;
+  font-size: 2rem;
+  font-weight: bold
+}
+.top .tl .ts{
+  display: inline-block;
+  width: 100%;
+  height: 60%;
+  text-align: center;
+  line-height: 14rem;
+  font-size: 3rem;
+  font-weight: bold;
+  color: orangered
+}
+ .top .tr{
+ position: relative;
+ float: right;
+ width: 80%;
+ height: 100%;
+ border: 0.1rem solid #cecece;
+ 
+}

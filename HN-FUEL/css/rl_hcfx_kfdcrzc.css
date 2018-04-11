@@ -1,0 +1,118 @@
+
+ /* ------------------以下为矿发到厂热值差样式------------------------ */
+ body{
+  margin: 0;
+  padding: 0;
+}
+p{
+ margin-bottom: 0 !important;
+ margin-top: 0.3rem !important;
+}
+ .top, .middle, .bottom{
+width: 100%;
+height: 33%;
+background: #F8F8F8;
+margin-bottom: 0.1%;
+/* border: 0.001rem solid red; */
+}
+ .bottom{
+ position: relative;
+}
+ .bottom{
+ background: #fff;
+ margin-bottom: 0;
+ /* border: 0.001rem solid red; */
+}
+ .top .tl, .middle .ml{
+  position: relative;
+  float: left;
+  width: 69%;
+  height: 100%;
+ /* border: 0.001rem solid red; */
+}
+ .top .tr, .middle .mr{
+ position: relative;
+ float: right;
+ width: 30%;
+ height: 100%;
+ border-left: 0.1rem solid #ccc;
+}
+.top .tr table{
+  border-spacing: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.top .tr table tr:first-child,.top .tr table tr:nth-child(4),.top .tr table tr:nth-child(5){
+  background: #efefef;
+}
+.top .tr table tr td{
+  text-align: center;
+  vertical-align: middle;
+}
+.top .tr table tr td:nth-child(4),.top .tr table tr td:nth-child(6){
+  width: 10%;
+}
+.top .kfrz_tit,.top .dcrz_tit,.top .rzc_tit{
+ font-size: 1.125rem;
+ font-weight: bold
+}
+.top .kfrz_data,.top .dcrz_data,.top .rzc_data{
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #F58A22
+ }
+.top .kfrz_tb_icon, .top .dcrz_tb_icon, .top .rzc_tb_icon,.top .kfrz_hb_icon, .top .dcrz_hb_icon, .top .rzc_hb_icon{
+  position: relative;
+  font-size: 2rem;
+ }
+ .fa-arrow-circle-up, .fa-arrow-circle-down{
+   position: absolute;
+   left: 0.8rem;
+   top: 0.1rem;
+   display: none;
+ }
+ 
+.fa-arrow-circle-up{
+  color: #0AD267;
+}
+.fa-arrow-circle-down{
+  color: #FD5C5B;
+}
+ .middle .mr ul{
+ width: 97%;
+ list-style: none;
+ padding-left: 0
+}
+ .middle .mr ul li{
+ float: left;
+ width: 25%;
+ height: 2rem;
+ font-size: 1.125rem;
+ line-height: 2rem;
+ font-weight: bold;
+ text-align: center;
+ background: #f2f2f2;
+}
+ .middle .mr .table{
+ overflow: scroll;
+ width: 100%;
+ height:14rem;
+}
+ .middle .mr .table table{
+ border-collapse: collapse;
+ width: 100%;
+ height: auto;
+}
+ .middle .mr .table table tr{
+ width: 100%;
+ height: 2rem;
+}
+ .middle .mr .table table tbody tr:nth-child(even){
+ background: #f2f2f2;
+}
+
+ .middle .mr .table table tr td{
+ width: 25%;
+ text-align: center
+}

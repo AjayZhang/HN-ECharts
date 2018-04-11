@@ -1,0 +1,189 @@
+
+ /* ------------------以下为月分析页样式------------------------ */
+ p{
+  margin-bottom: 0 !important;
+}
+#yfx .top,#yfx .middle,#yfx .bottom{
+ width: 100%;
+ height: 33%;
+ background: #F8F8F8;
+ margin-bottom: 0.3%;
+ /* border: 0.001rem solid red; */
+}
+#yfx .bottom{
+  position: relative;
+ }
+#yfx .bottom{
+  background: #fff;
+  margin-bottom: 0;
+  /* border: 0.001rem solid red; */
+ }
+ #yfx .top .tl,#yfx .middle .ml{
+   position: relative;
+   float: left;
+   width: 70%;
+   height: 100%;
+  /* border: 0.001rem solid red; */
+ }
+ #yfx .top .tr,#yfx .middle .mr{
+  position: relative;
+  float: right;
+  width: 30%;
+  height: 100%;
+  border-left: 0.1rem solid #ccc;
+}
+#yfx .top .tr .frl,#yfx .top .tr .shhl{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display:none
+}
+#yfx .top .tr .frl.active,#yfx .top .tr .shhl.active{
+  
+  display:block
+}
+#yfx .top .tr .rcrz,#yfx .top .tr .ljrcrz,#yfx .top .tr .ydjh{
+  width: 100%;
+  height: 33%;
+}
+#yfx .top .frl p.total{
+  width: 100%;
+  height: 2.5rem;
+  background: #f2f2f2;
+  font-size: 1.125rem;
+  font-weight: bold;
+  line-height: 2.5rem;
+  padding-left: 1rem;
+  box-sizing: border-box
+}
+#yfx .top .frl p.total b{
+  float: left;
+  width: 30%;
+  height: 2.5rem;
+}
+#yfx .top .frl p.total span{
+  float: right;
+  width: 70%;
+  height: 2.5rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #F58A22
+}
+#yfx .top .frl .tbzj,#yfx .top .frl .hbzj{
+  position: relative;
+  float: left;
+  line-height: 2.7rem;
+  margin-left: 1.5rem;
+  font-size: 1rem;
+  width: 43%;
+}
+#yfx .top .frl .tbzj i,#yfx .top .frl .hbzj i{
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 2rem;
+  display: none;
+}
+
+#yfx .top .shhl p.total{
+  width: 100%;
+  height: 5rem;
+  background: #f2f2f2;
+  font-size: 1.125rem;
+  font-weight: bold;
+  line-height: 5rem;
+  padding-left: 1rem;
+  box-sizing: border-box
+}
+#yfx .top .shhl p.total span{
+  float: right;
+  width: 70%;
+  height: 5rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #F58A22
+}
+#yfx .top .shhl .tbzj,#yfx .top .shhl .hbzj{
+  position: relative;
+  line-height: 5.5rem;
+  margin-left: 1.5rem;
+  font-size: 1rem;
+  width: 100%;
+}
+#yfx .top .shhl .tbzj i,#yfx .top .shhl .hbzj i{
+  position: absolute;
+  top: 1.8rem;
+  right: 15rem;
+  font-size: 2rem;
+  display: none;
+}
+.fa-arrow-circle-up{
+  color: #0AD267;
+}
+.fa-arrow-circle-down{
+  color: #FD5C5B;
+}
+
+#yfx .middle .mr .frl,.shhl{
+  width: 100%;
+  display: none
+ }
+ #yfx .middle .mr .frl.active,.shhl.active{
+  display: block
+ }
+#yfx .middle .mr ul{
+  width: 100%;
+  list-style: none;
+  padding-left: 0
+ }
+ #yfx .middle .mr .frl ul li{
+  float: left;
+  width: 25%;
+  height: 2rem;
+  font-size: 1.125rem;
+  line-height: 2rem;
+  font-weight: bold;
+  text-align: center;
+  background: #f2f2f2;
+ }
+ #yfx .middle .mr .shhl ul li{
+  float: left;
+  width: 50%;
+  height: 2rem;
+  font-size: 1.125rem;
+  line-height: 2rem;
+  font-weight: bold;
+  text-align: center;
+  background: #f2f2f2;
+ }
+ #yfx .middle .mr .table{
+  overflow: scroll;
+  width: 100%;
+  height:14rem;
+}
+#yfx .middle .mr .table table{
+  border-collapse: collapse;
+  width: 100%;
+  height: auto;
+}
+#yfx .middle .mr .table table tbody{
+  width: 100%;
+}
+#yfx .middle .mr .table table tr{
+  width: 100%;
+  height: 2rem;
+}
+#yfx .middle .mr .table table tbody tr:nth-child(even){
+  background: #f2f2f2;
+}
+
+#yfx .middle .mr .frl .table table tr td{
+  width: 25%;
+  text-align: center
+}
+#yfx .middle .mr .shhl .table table tr td{
+  width: 50%;
+  text-align: center
+}
