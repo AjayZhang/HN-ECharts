@@ -1,0 +1,220 @@
+<!-- <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+      <c:set var="ctx" value="${pageContext.request.contextPath}" /> -->
+<!-- ----------------------开发：张亚杰 20180319----------------------- -->
+<!-- ----------------------修改：张亚杰 20180327----------------------- -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>燃料首页-标煤采购单价月趋势</title>
+  <link rel="stylesheet" href="css/rl_trend_bmcgdjqs.css">
+</head>
+<body>
+  <div class="content">
+    <div class="left" id="bar"></div>
+    <div class="right">
+      <table>
+        <tr>
+          <td colspan="2">2月标煤采购单价</td>
+          <td colspan="2" id="bydj">798.7</td>
+        </tr>
+        <tr>
+          <td>同比增减</td>
+          <td id="bytbzj">+76.5</td>
+          <td>环比增减</td>
+          <td id="byhbzj">+38.9</td>
+        </tr>
+        <tr>
+          <td>同比涨幅</td>
+          <td id="bytbzf">10.2%</td>
+          <td>环比涨幅</td>
+          <td id="byhbzf">20.8%</td>
+        </tr>
+        <tr>
+          <td colspan="2">1-2月标煤采购单价</td>
+          <td colspan="2" id="ljdj">770.7</td>
+        </tr>
+        <tr>
+          <td>同比增减</td>
+          <td id="ljtbzj">+52.3</td>
+          <td>同比涨幅</td>
+          <td id="ljtbzf">+7.3%</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/font.js"></script>
+<script src="js/echarts.js"></script>
+<script>
+  // var tit=parent.$(".menu>.tab.active").find("p").text();
+  // console.log(tit)
+  //-------------------窗口加载----------------------
+  $(window).ready(function () {
+    var W_w = $(window).width();
+    var W_h = $(window).height();
+    $('.content').width(W_w);
+    $('.content').height(W_h);
+    // $("#p_group>p").text(orgname);
+    drawBar(BarData);
+    // $(function () {
+    //   GL_dateInfo = parent.$("#dateYM").val();
+    //   var year = GL_dateInfo.substring(0, 4);
+    //   var month = function () {
+    //     var m = GL_dateInfo.substring(5, 7);
+    //     if (m < 10) {
+    //       var nm = m.substring(1, 2);
+    //       return nm;
+    //     } else {
+    //       return m;
+    //     }
+    //   };
+    //   var newDate = year.concat(GL_dateInfo.substring(5, 7));
+    //   // refreshData(orgcode,GL_dateInfo);
+    //   draw1 = "lineBar1";
+    //   draw2 = "lineBar2";
+    //   draw3 = "lineBar3";
+    //   drawBarLine1(lineBarData_1, wd, draw1);
+    //   drawBarLine2(lineBarData_2, year, month(GL_dateInfo), wd, draw2);
+    //   drawBarLine3(lineBarData_2, year, month(GL_dateInfo), wd, draw3);
+    // })
+  })
+
+  //-------------------窗口尺寸变化------------------------
+  $(window).resize(function () {
+    var W_w = $(window).width();
+    var W_h = $(window).height();
+    $('.content').width(W_w);
+    $('.content').height(W_h);
+  })
+
+  //-----------------------以下为模拟数据--------------------------------//
+
+  var BarData = {
+    xdata1: ["2017.02", "2017.02", "2017.02", "2017.02", "2017.02", "2017.02", "2017.02", "2017.02", "2017.02",
+      "2017.02", "2017.02", "2017.02"
+    ],
+    
+    xdata2: ["福建", "浙江", "上海", "海南", "辽宁", "河北","福建", "浙江", "上海", "海南", "辽宁", "河北"],
+    ydata1: [4679, 3872, 2364, 3679, 1872, 3364, 1679, 872,364, 679, 872,364],
+    ydata2: [4279, 4372, 4064, 4279, 4372, 4064, 4279, 4372, 4064, 4279, 4372, 4064,],
+    ydata3: [79, 72, 64, 79, 72, 64, 79, 72, 64, 79, 72, 64,],
+  }
+
+  //-----------------------以下为第一页图表--------------------------------//
+
+  var drawBar = function (datainfo) {
+    var myChart = echarts.init(document.getElementById("bar"));
+    var option = {
+      title: {
+        text: '集团标煤采购单价月趋势',
+        subtext:'单位：元/吨',
+        x: 'center',
+        y: '2%',
+        subtextStyle:{
+          align:'left',
+        }
+      },
+      legend: {
+        show: true,
+        top: '10%',
+        right: '3%',
+        textStyle:{
+          fontSize:'80%'
+        }
+      },
+      tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    crossStyle: {
+                        color: '#6a7985'
+                    }
+                }
+            },
+      grid: {
+        left: '2%',
+        right: '2%',
+        top: '22%',
+        bottom: '6%',
+        containLabel: true
+      },
+      xAxis: {
+        data: datainfo.xdata1,
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: "80%"
+        }
+      },
+      yAxis: [{
+        type: 'value',
+        scale: true,
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: "80%"
+        },
+        splitNumber:3
+      }],
+      series: [{
+        name: "本月",
+        type: 'line',
+        data: datainfo.ydata1,
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: {
+          normal: {
+            color: '#72B9F6',
+            lineStyle: {
+              color: '#65B3F7'
+            }
+          }
+        },
+      },{
+        name: "本年累计",
+        type: 'line',
+        data: datainfo.ydata2,
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: {
+          normal: {
+            color: '#FF7F7F',
+            lineStyle: {
+              color: '#FF807F'
+            }
+          }
+        },
+      },{
+        name: "去年同期",
+        type: 'line',
+        data: datainfo.ydata3,
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: {
+          normal: {
+            color: '#F4D834',
+            lineStyle: {
+              color: '#F1CE00'
+            }
+          }
+        },
+      },]
+    };
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
+  }
+
+
+</script>
