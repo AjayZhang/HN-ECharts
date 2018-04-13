@@ -1,0 +1,58 @@
+body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family:Microsoft YaHei
+}
+p{
+  margin: 0;
+}
+.wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/*kpi-top正式样式 */
+
+.main {
+    height: 170px;
+    cursor: pointer;
+}
+
+.main #num {
+	width:10rem;
+	height:5rem;
+	border:0.1rem solid red;
+	margin:2rem auto;
+  text-align: center;
+    
+}
+
+#title {
+	width:10rem;
+	height:3rem;
+	border:0.1rem solid red;
+	margin:2rem auto;
+  text-align: center;
+}
+
+
+.kpi-loading {
+    display: none;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .1);
+    /* text-align: center;
+line-height: 170px; */
+}
+
+.kpi-loading .load {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

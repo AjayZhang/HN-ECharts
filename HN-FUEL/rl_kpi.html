@@ -1,0 +1,61 @@
+<!-- <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>KPI</title>
+    <!-- 整体样式--对应替换kpi_jhwcl.html -->
+     <link rel="stylesheet" href="css/rl_kpi.css">
+</head>
+
+<body class="wrap">
+    <div class="main">
+        <div id="num">kpiId</div>
+        <p id="title">${TITLE}</p>
+    </div>
+    <!-- kpi-loading -->
+	<div class="kpi-loading">
+		<div class="load">
+			<img src="${ctx}/img/load.gif" alt="">
+		</div>
+	</div>
+</body>
+<!-- js -->
+<script src="js/jquery-2.1.1.js"></script>
+<script>
+    var $  =  window.parent.jQuery;
+	  var chartObj="";
+	  var kpiId = 3;
+    var num=kpiId%2;
+	//var kpiTitle = ${TITLE};
+	//console.log(kpiId,kpiTitle)
+	//function $s(strSelector) {
+		//return $(document).find(".kpi-loading");
+	//}
+	
+    $(document).ready(function (e) {
+      if(num==0){
+        $("#num").css("background","red");
+      }else{
+        console.log(kpiId,num)
+        $("#num").css("background","green");        
+      }
+    	//$s(".kpi-loading").show();
+        //kpi();
+        // setInterval(function () {
+        //     kpi();
+        // }, 3000);
+    });
+    
+    //$s(".kpi-loading").hide();
+    //function show(){
+    	//window.parent.queryResUrl(kpiId);
+    //}
+</script>
+
+</html>
