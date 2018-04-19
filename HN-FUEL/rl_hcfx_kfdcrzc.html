@@ -204,10 +204,10 @@
       "2017.02", "2017.02", "2017.02"
     ],
 
-    xdata2: ["福建", "浙江", "上海", "海南", "辽宁", "河北", "福建", "浙江", "上海", "海南", "辽宁", "河北"],
-    ydata1: [4679, 4872, 4364, 4679, 4872, 4364, 4679, 4872, 4364, 4679, 4872, 4364],
-    ydata2: [4279, 4372, 4064, 4279, 4372, 4064, 4279, 4372, 4064, 4279, 4372, 4064, ],
-    ydata3: [-79, 72, -64, 79, -72, 64, 79, -72, 64, -79, 72, 64, ],
+    xdata2: [ "浙江", "浙江", "上海", "海南", "辽宁", "河北", "福建", "浙江", "上海", "浙江"],
+    ydata1: [4872, 4872, 4364, 4679, 4872, 4364, 4679, 4872, 4364],
+    ydata2: [4372, 4372, 4064, 4279, 4372, 4064, 4279, 4372, 4064],
+    ydata3: [ 72,72, -64, 79, -72, 64, 79, -72, 64],
   }
 
   //-----------------------以下为第一页图表--------------------------------//
@@ -489,6 +489,34 @@
       }
       return colorList;
     };
+    var end=function(params){
+        var data=params.xdata2;
+        var len=data.length;
+        console.log(len)
+        if(len>=100){
+          w=50;
+        }else if(len>=80&&len<100){
+          w=60;
+        }else if(len>=60&&len<80){
+          w=70;
+        }else if(len>=40&&len<60){
+          w=80;
+        }else{
+          w=100        
+        }
+        return w;
+    }
+    var flg=function(params){
+        var data=params.xdata2;
+        var len=data.length;
+        console.log(len)
+        if(len>40){
+          flg=true;
+        }else{
+          flg=false;
+        }
+        return flg;
+    }
     var option = {
       title: {
         text: '2018年3月各电厂矿发到厂热值差分析',
@@ -520,9 +548,10 @@
         containLabel: true
       },
       dataZoom: {
+        show:flg(datainfo),
         type: 'slider',
         start: 0,
-        end: 30,
+        end: end(datainfo),
       },
       calculable: true,
       xAxis: [{
