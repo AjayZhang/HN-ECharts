@@ -8,187 +8,141 @@
   margin-bottom: 0 !important;
   margin-top: 0.3rem !important;
 }
-#yfx .top,#yfx .middle,#yfx .bottom{
+#yfx .top,#yfx .bottom{
  width: 100%;
  height: 33%;
  background: #F8F8F8;
- margin-bottom: 0.3%;
+ margin-bottom: 0.2%;
+ border-bottom: 0.1rem solid #F1F1F1;
  /* border: 0.001rem solid red; */
 }
 #yfx .bottom{
-  position: relative;
- }
-#yfx .bottom{
+  height: 65.6%;
   background: #fff;
   margin-bottom: 0;
-  /* border: 0.001rem solid red; */
+  background: #F1F1F1
  }
- #yfx .top .tl,#yfx .middle .ml{
+ #yfx .top .tl,#yfx .bottom .btl,#yfx .bottom .bbl{
    position: relative;
    float: left;
    width: 70%;
    height: 100%;
+   box-shadow: 12px 0px 22px -16px;
   /* border: 0.001rem solid red; */
  }
  #yfx .top .tr,#yfx .middle .mr{
-  position: relative;
   float: right;
   width: 30%;
   height: 100%;
-  border-left: 0.1rem solid #ccc;
+  border: 0.1rem dashed #e1e1e1;
 }
-#yfx .top .tr .frl,#yfx .top .tr .shhl{
-  position: absolute;
-  right: 0;
-  top: 0;
+#yfx .top .tr table{
   width: 100%;
   height: 100%;
-  display:none
+  border-collapse: collapse;
 }
-#yfx .top .tr .frl.active,#yfx .top .tr .shhl.active{
-  
-  display:block
-}
-#yfx .top .tr .rcrz,#yfx .top .tr .ljrcrz,#yfx .top .tr .ydjh{
+#yfx .top .tr table tr{
   width: 100%;
-  height: 33%;
+  height: 3rem;
 }
-#yfx .top .frl p.total{
-  width: 100%;
-  height: 2.5rem;
-  background: #f2f2f2;
-  font-size: 1.125rem;
+#yfx .top .tr table tr:nth-child(even){
+  background: #F1F1F1
+}
+#yfx .top .tr table tr:nth-child(even) td,#yfx .top .tr table tr:first-child td{
   font-weight: bold;
-  line-height: 2.5rem;
-  padding-left: 1rem;
-  box-sizing: border-box
+  font-size: 1.25rem;
 }
-#yfx .top .frl p.total b{
-  float: left;
-  width: 30%;
-  height: 2.5rem;
-}
-#yfx .top .frl p.total span{
-  float: right;
-  width: 70%;
-  height: 2.5rem;
-  font-size: 1.6rem;
+#yfx .top .tr table tr:nth-child(even) td:nth-child(2),#yfx .top .tr table tr:first-child td:nth-child(2){
   font-weight: bold;
-  color: #F58A22
+  font-size: 1.8rem;
+  color: #F97F71
 }
-#yfx .top .frl .tbzj,#yfx .top .frl .hbzj{
+#yfx .top .tr table tr td{
+  width: 16.6%;
+  text-align: center;
+}
+table td{
   position: relative;
-  float: left;
-  line-height: 2.7rem;
-  margin-left: 1.5rem;
-  font-size: 1rem;
-  width: 43%;
-}
-#yfx .top .frl .tbzj i,#yfx .top .frl .hbzj i{
-  position: absolute;
-  top: 0.5rem;
-  right: 1rem;
-  font-size: 2rem;
-  display: none;
-}
 
-#yfx .top .shhl p.total{
-  width: 100%;
-  height: 5rem;
-  background: #f2f2f2;
-  font-size: 1.125rem;
-  font-weight: bold;
-  line-height: 5rem;
-  padding-left: 1rem;
-  box-sizing: border-box
 }
-#yfx .top .shhl p.total span{
-  float: right;
-  width: 70%;
-  height: 5rem;
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #F58A22
-}
-#yfx .top .shhl .tbzj,#yfx .top .shhl .hbzj{
-  position: relative;
-  line-height: 5.5rem;
-  margin-left: 1.5rem;
-  font-size: 1rem;
-  width: 100%;
-}
-#yfx .top .shhl .tbzj i,#yfx .top .shhl .hbzj i{
+table td>i{
   position: absolute;
-  top: 1.8rem;
-  right: 15rem;
-  font-size: 2rem;
-  display: none;
+  top: 1rem;
+  left: 1rem;
 }
 .fa-arrow-circle-up{
-  color: #0AD267;
+  color: #FD5C5B;
+  display:none;
+  font-size: 2rem;
 }
 .fa-arrow-circle-down{
-  color: #FD5C5B;
+  color: #0AD267;
+  display:none;
+  font-size: 2rem;
+  
 }
-
-#yfx .middle .mr .frl,.shhl{
-  width: 100%;
-  display: none
- }
- #yfx .middle .mr .frl.active,.shhl.active{
-  display: block
- }
-#yfx .middle .mr ul{
-  width: 100%;
+.bottom ul{
+  height: 6%;
+  margin: 0;
+}
+.bottom ul li{
+  float: left;
   list-style: none;
-  padding-left: 0
- }
- #yfx .middle .mr .frl ul li{
-  float: left;
-  width: 25%;
-  height: 2rem;
-  font-size: 1.125rem;
-  line-height: 2rem;
-  font-weight: bold;
+  width: 5rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  border: 0.1rem solid #3598D8;
+  background: #fff;
+  color: #3598D8;
   text-align: center;
-  background: #f2f2f2;
- }
- #yfx .middle .mr .shhl ul li{
-  float: left;
-  width: 50%;
-  height: 2rem;
-  font-size: 1.125rem;
-  line-height: 2rem;
-  font-weight: bold;
-  text-align: center;
-  background: #f2f2f2;
- }
- #yfx .middle .mr .table{
-  overflow: scroll;
-  width: 100%;
-  height:14rem;
+  cursor: pointer;  
+} 
+.bottom ul li.active {
+    border: 0.1rem solid #3598D8;
+    background: #3598D8;
+    color: #fff;
 }
-#yfx .middle .mr .table table{
-  border-collapse: collapse;
+.bottom .bt,.bottom .bb{
   width: 100%;
-  height: auto;
-}
-#yfx .middle .mr .table table tbody{
-  width: 100%;
-}
-#yfx .middle .mr .table table tr{
-  width: 100%;
-  height: 2rem;
-}
-#yfx .middle .mr .table table tbody tr:nth-child(even){
-  background: #f2f2f2;
+  height: 47%;
 }
 
-#yfx .middle .mr .frl .table table tr td{
+.bottom .bt .btl,.bottom .bb .bbl{
+  float: left;
+  width: 70%;
+  height: 100%;
+}
+
+.btr,.bbr{
+  float: right;
+  width: 30%;
+  height: 100%;
+
+}
+.btr table,.bbr table{
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+
+}
+.btr table tr,.bbr table tr{
+  width: 100%;
+  height:2rem;
+}
+.btr table tr td,.bbr table td{
   width: 25%;
+  height:2rem;
   text-align: center
 }
-#yfx .middle .mr .shhl .table table tr td{
-  width: 50%;
-  text-align: center
+.btr table tr:first-child,.bbr table tr:first-child{
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: left
+}
+.btr table tr:nth-child(odd),.bbr table tr:nth-child(odd){
+  background: #fff
+}
+.btr table tr:first-child td,.bbr table tr:first-child td{
+  text-align: left;
+  padding-left: 1rem;
 }
